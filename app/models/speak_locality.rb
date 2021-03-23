@@ -10,4 +10,8 @@
 class SpeakLocality < ApplicationRecord
   has_many :speak_costs
   has_many :speak_destinies, through: :speak_costs
+
+  def self.localities_with_destinies
+    self.select { |n| n.speak_costs.count > 0 }
+  end
 end
