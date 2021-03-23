@@ -10,15 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_23_184633) do
+ActiveRecord::Schema.define(version: 2021_03_23_195033) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "speak_connection_costs", force: :cascade do |t|
-    t.string "source"
-    t.string "destiny"
-    t.float "price"
+  create_table "speak_costs", force: :cascade do |t|
+    t.integer "speak_locality_id"
+    t.integer "speak_destiny_id"
+    t.float "cost"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["speak_destiny_id", "speak_locality_id"], name: "index_speak_costs_on_speak_destiny_id_and_speak_locality_id", unique: true
+    t.index ["speak_locality_id", "speak_destiny_id"], name: "index_speak_costs_on_speak_locality_id_and_speak_destiny_id", unique: true
+  end
+
+  create_table "speak_localities", force: :cascade do |t|
+    t.integer "code"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
