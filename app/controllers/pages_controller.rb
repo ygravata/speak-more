@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :home ]
 
   def home
+    @localities_with_destinies = SpeakLocality.localities_with_destinies
   end
 end
