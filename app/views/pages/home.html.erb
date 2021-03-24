@@ -2,16 +2,19 @@
 <p>Find me in app/views/pages/home.html.erb</p>
 <%= @teste %>
 
-<select id="select_origin" class="form-select" aria-label="Default select example">
-  <option selected>Select a origin code</option>
-  <%= @localities_with_destinies.each do |locality| %>
-    <option value="${locality.id}"><%= locality.code %></option>
-  <% end %>
-</select>
+<div>
+  <label for="origin_dropdown">Select a origin code:</label>
+  <select id="origin_dropdown" class="form-select" aria-label="Default select example">
+    <option selected></option>
+    <% @localities_with_destinies.each do |locality| %>
+    <option class="origin_selected" dataset="<%= locality.id %>"><%= locality.code %></option>
+    <% end %>
+  </select>
+</div>
 
-<select class="form-select form-select-sm" aria-label=".form-select-sm example">
-  <option selected>Open this select menu</option>
-  <option value="1">One</option>
-  <option value="2">Two</option>
-  <option value="3">Three</option>
-</select>
+<div>
+  <label id="destiny_label" class="invisible" for="destiny_dropdown">Choose a car:</label>
+  <select class="form-select form-select-sm invisible" id="destiny_dropdown" aria-label=".form-select-sm example">
+    <option selected>Open this select menu</option>
+  </select>
+</div>
