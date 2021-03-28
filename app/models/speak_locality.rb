@@ -14,4 +14,8 @@ class SpeakLocality < ApplicationRecord
   def self.localities_with_destinies
     self.select { |n| n.speak_costs.count > 0 }
   end
+
+  def destiny_cost(id)
+    self.speak_costs.find{|speak_cost| speak_cost.speak_destiny_id == id}
+  end
 end
