@@ -28,11 +28,15 @@ const generateDestiniesDown = () => {
       const destinyDropdown = document.querySelector("#destiny_dropdown");
       const planLabel = document.querySelector("#plan_label");
       const planDropdown = document.querySelector("#plan_dropdown");
+      const inputDiv = document.querySelector("#input_div");
+      const submitButton = document.querySelector("#submit_button");
 
       destinyLabel.classList.remove("invisible");
       destinyDropdown.classList.remove("invisible");
       planLabel.classList.remove("invisible");
       planDropdown.classList.remove("invisible");
+      inputDiv.classList.remove("invisible");
+      submitButton.classList.remove("invisible");
     })
   }
 }
