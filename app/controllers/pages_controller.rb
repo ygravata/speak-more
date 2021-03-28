@@ -26,7 +26,7 @@ class PagesController < ApplicationController
 
   def plan_cost(time, plan_type, cost)
     if time > plan_type
-      (plan_type - time) * (cost * 1.1 )
+      (time - plan_type) * (cost * 1.1 )
     else
       0
     end
