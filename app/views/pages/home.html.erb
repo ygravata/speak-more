@@ -1,20 +1,39 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-<%= @teste %>
+<h4 class="mt-4">Simulate now!</h4>
 
-<div>
-  <label for="origin_dropdown">Select a origin code:</label>
-  <select id="origin_dropdown" class="form-select" aria-label="Default select example">
-    <option selected></option>
-    <% @localities_with_destinies.each do |locality| %>
-    <option class="origin_selected" dataset="<%= locality.id %>"><%= locality.code %></option>
-    <% end %>
-  </select>
-</div>
 
-<div>
-  <label id="destiny_label" class="invisible" for="destiny_dropdown">Choose a car:</label>
-  <select class="form-select form-select-sm invisible" id="destiny_dropdown" aria-label=".form-select-sm example">
-    <option selected>Open this select menu</option>
-  </select>
-</div>
+<form class="mt-5" id="form" action="/calculation" method="get">
+
+  <div>
+    <label for="origin_dropdown">Choose your <span style="font-weight:bold;">source</span> city code:</label>
+    <select name="origin_code" id="origin_dropdown" class="form-select" aria-label="Default select example">
+      <option selected></option>
+      <% @localities_with_destinies.each do |locality| %>
+      <option class="origin_selected" dataset="<%= locality.id %>"><%= locality.code %></option>
+      <% end %>
+    </select>
+  </div>
+
+  <div>
+    <label id="destiny_label" class="destiny_select invisible" for="destiny_dropdown">Choose your <span style="font-weight:bold;">destiny</span> city code:</label>
+    <select name="destiny_code" class="form-select form-select-sm destiny_select invisible" id="destiny_dropdown" aria-label=".form-select-sm example">
+      <option selected>Open this select menu</option>
+    </select>
+  </div>
+
+  <div>
+    <label id="plan_label" class="invisible" for="plan_dropdown">Choose your minutes plan:</label>
+    <select name="plan_type" class="form-select form-select-sm invisible plan_select" id="plan_dropdown" aria-label=".form-select-sm example">
+      <option selected>30</option>
+      <option selected>60</option>
+      <option selected>120</option>
+    </select>
+  </div>
+
+  <div id="input_div" class="invisible input-group mb-3 text-center" style="margin:auto; width:30%;">
+    <input name="minutes" type="text" class="form-control" pattern="[0-9]*" aria-label="Minutes to talk">
+    <span class="input-group-text">minutes</span>
+  </div>
+
+  <button id="submit_button" type="submit" class="btn btn-primary invisible">Submit</button>
+
+</form>

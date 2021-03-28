@@ -1,0 +1,13 @@
+<h4 class="mt-4">Your plan simulation results!</h4>
+
+<div class="mt-5">
+  <h5>With your <span style="font-weight:bold;"><%= @plan_type %> minutes</span> plan:</h5>
+  <h3>R$ <%= number_with_precision(@plan_cost.to_f.round(2), :precision => 2, :delimiter => ',')%></h3>
+</div>
+
+<div class="mt-5">
+  <h5>Without any plan:</h5>
+  <h3>R$ <%= number_with_precision(@no_plan_cost.to_f.round(2), :precision => 2, :delimiter => ',')%></h3>
+</div>
+
+<%= link_to "Simulate again!", root_path, class:"btn btn-primary mt-5" %>
